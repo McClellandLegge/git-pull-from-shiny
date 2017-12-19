@@ -19,12 +19,10 @@ RUN apt-get update && apt-get install -y -t unstable \
     R -e "install.packages(c('shiny', 'rmarkdown'), repos='https://cran.rstudio.com/')" && \
     cp -R /usr/local/lib/R/site-library/shiny/examples/* /srv/shiny-server/ && \
     rm -rf /var/lib/apt/lists/*
-
+    
 EXPOSE 3838
 
 COPY shiny-server.sh /usr/bin/shiny-server.sh
-
-RUN sudo apt-get install -y git
 
 RUN git clone https://github.com/McClellandLegge/git-pull-from-shiny.git /srv/shiny-server/
 
